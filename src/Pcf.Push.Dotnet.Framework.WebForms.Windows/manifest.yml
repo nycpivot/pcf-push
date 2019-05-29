@@ -1,0 +1,8 @@
+﻿---
+applications:
+-   name: pcf-push-dotnet-framework-webforms-windows
+    stack: windows2016
+    buildpack: hwc_buildpack
+    disk_quota: 512M
+    memory: 512M
+    instances: 1

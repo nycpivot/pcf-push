@@ -1,0 +1,9 @@
+﻿---
+applications:
+-   name: pcf-push-dotnet-core-mvc-windows
+    stack: windows2016
+    buildpack: binary_buildpack
+    disk_quota: 512M
+    memory: 512M
+    instances: 1
+    command: cmd /c .\Pcf.Push.Dotnet.Core.Mvc.Windows --server.urls http://*:%PORT%

@@ -1,0 +1,9 @@
+docker system prune
+docker system prune --volumes
+
+docker kill id
+docker container rm id id id
+
+docker image prune -a
+
+docker image rm id

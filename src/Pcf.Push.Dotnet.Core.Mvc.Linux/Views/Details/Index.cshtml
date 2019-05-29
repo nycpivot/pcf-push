@@ -1,0 +1,84 @@
+﻿@model Application
+
+<h2>Environment Variables</h2>
+
+<hr />
+
+<h4>VCAP_APPLICATION</h4>
+<p></p>
+<table class="table table-striped">
+    <tr>
+        <td>Application Id</td>
+        <td>@Model.application_id</td>
+    </tr>
+    <tr>
+        <td>Application Name</td>
+        <td>@Model.application_name</td>
+    </tr>
+    <tr>
+        <td>Application Version</td>
+        <td>@Model.application_version</td>
+    </tr>
+    <tr>
+        <td>Space Id</td>
+        <td>@Model.space_id</td>
+    </tr>
+    <tr>
+        <td>Space Name</td>
+        <td>@Model.space_name</td>
+    </tr>
+    <tr>
+        <td>URIs</td>
+        <td>@ViewBag.Uris</td>
+    </tr>
+    <tr>
+        <td>API</td>
+        <td>@Model.cf_api</td>
+    </tr>
+    <tr>
+        <td>Disk Limit</td>
+        <td>@Model.limits.disk</td>
+    </tr>
+    <tr>
+        <td>Memory</td>
+        <td>@Model.limits.mem</td>
+    </tr>
+    <tr>
+        <td>Instance Id</td>
+        <td>@Model.instance_id</td>
+    </tr>
+    <tr>
+        <td>Instance Index</td>
+        <td>@Model.instance_index</td>
+    </tr>
+    <tr>
+        <td>Port</td>
+        <td>@Model.port</td>
+    </tr>
+</table>
+
+<h2>Host</h2>
+
+<hr />
+
+<h4>OS</h4>
+<p></p>
+<table class="table table-striped">
+    <tr>
+        <td>Stack</td>
+        <td>@ViewBag.OSDescription</td>
+    </tr>
+</table>
+
+<h4>DNS</h4>
+<p></p>
+<table class="table table-striped">
+    <tr>
+        <td>Host Name</td>
+        <td>@ViewBag.HostName</td>
+    </tr>
+    <tr>
+        <td>Host Address</td>
+        <td>@ViewBag.HostAddress</td>
+    </tr>
+</table>
