@@ -1,0 +1,11 @@
+﻿---
+applications:
+-   name: pcf-push-dotnet-framework-mvc-windows-config
+    stack: windows2016
+    buildpack: hwc_buildpack
+    disk_quota: 512M
+    memory: 512M
+    instances: 1
+    services:
+    - pcf-cups-app-settings
+    - pcf-cups-connection-strings

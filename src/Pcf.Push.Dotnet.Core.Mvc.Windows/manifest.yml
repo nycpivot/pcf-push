@@ -6,4 +6,5 @@ applications:
     disk_quota: 512M
     memory: 512M
     instances: 1
+    health-check-type: http
     command: cmd /c .\Pcf.Push.Dotnet.Core.Mvc.Windows --server.urls http://*:%PORT%

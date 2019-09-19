@@ -1,4 +1,4 @@
-cf target -s pcf-dotnet-push
+cf target -s pcf-push
 pause
 @cls
 

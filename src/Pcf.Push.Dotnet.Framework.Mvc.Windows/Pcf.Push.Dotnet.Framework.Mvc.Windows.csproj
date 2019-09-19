@@ -170,7 +170,9 @@
     </Content>
     <Content Include="README.md" />
     <Content Include="cf-push.bat" />
-    <Content Include="manifest.yml" />
+    <Content Include="manifest.yml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\PublishProfiles\Release.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />

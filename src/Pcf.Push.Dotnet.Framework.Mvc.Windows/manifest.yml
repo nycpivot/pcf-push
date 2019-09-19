@@ -1,6 +1,6 @@
 ﻿---
 applications:
--   name: pcf-dotnet-framework-push-mvc-windows
+-   name: pcf-push-dotnet-framework-mvc-windows
     stack: windows2016
     buildpack: hwc_buildpack
     disk_quota: 512M
