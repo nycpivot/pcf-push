@@ -1,8 +1,10 @@
 ﻿---
 applications:
--   name: advance
-    stack: cflinuxfs3
-    buildpack: dotnet_core_buildpack
+-   name: rs-windows
+    stack: windows
+    buildpack: binary_buildpack
     disk_quota: 512M
     memory: 512M
     instances: 1
+    health-check-type: http
+    command: cmd /c .\Advance --server.urls http://*:%PORT%

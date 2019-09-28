@@ -5,30 +5,42 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Net;
+using System.Text;
 
 namespace Advance.Controllers
 {
     public class HomeController : Controller
     {
+        //public HomeController()
+        //{
+        //    ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
+        //}
+
         public IActionResult Index()
         {
-            ViewBag.ReportUrl = GetCognosReportUrlByReportGatewayService();
+            return View();
+        }
+
+        public IActionResult About() //F5
+        {
+            ViewBag.ReportUrl = GetCognosReportUrlByReportGatewayService("http://localhost:53401/Home/Input?q=werwer");
+                //"https://esbstg.nycboe.net/appreporting/v1/ReportDataSync");
 
             return View();
         }
 
-        public IActionResult About()
+        public IActionResult Contact() //DIRECT
         {
-            ViewData["Message"] = "Your application description page.";
+            ViewBag.ReportUrl = GetCognosReportUrlByReportGatewayService(
+                "http://mtsapplx02.c3ntral.nyc3d.0rg:7800/appreporting/v1/ReportDataSync");
 
             return View();
         }
 
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
 
-            return View();
+        public void Input(string q)
+        {
+            //HttpContext.Request
         }
 
         public IActionResult Error()
@@ -36,17 +48,19 @@ namespace Advance.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
 
-        private string GetCognosReportUrlByReportGatewayService()
+        private string GetCognosReportUrlByReportGatewayService(string url)
         {
             string strReportUrl = string.Empty;
-            string strReportGatewayURL = "https://esbstg.nycboe.net/appreporting/v1/ReportDataSync";
+            string strReportGatewayURL = url;
             string strReportGatewayServiceUserID = "Service.TPR";
             string strReportGatewayServicePassword = "82ARdz8";
+
 
             // call the ESB service
             if (strReportGatewayURL.Length > 0)
             {
                 HttpWebRequest webRequest = (HttpWebRequest)WebRequest.Create(strReportGatewayURL);
+                webRequest.Proxy = new WebProxy("http://127.0.0.1:8888");
 
                 if (strReportGatewayServiceUserID.Length > 0 && strReportGatewayServicePassword.Length > 0)
                 {
@@ -73,8 +87,10 @@ namespace Advance.Controllers
                                 sw.Close();
                             }
 
+                           
                             s.Close();
                         }
+
 
                         using (Stream s = webRequest.GetResponse().GetResponseStream())
                         {
@@ -92,11 +108,13 @@ namespace Advance.Controllers
                                 }
                                 catch (Exception ex)
                                 {
+                                    strReportUrl = ex.ToString();
+
                                     ex.GetHashCode();
 
                                     if (obj.errors != null && obj.errors[0].Length > 0)
                                     {
-                                        Console.WriteLine(obj.errors[0].ToString());
+                                        Console.WriteLine("INNER ERROR: " + obj.errors[0].ToString());
                                     }
                                 }
 
@@ -109,8 +127,15 @@ namespace Advance.Controllers
                 }
                 catch (Exception ex)
                 {
-                    ex.GetHashCode();
+                    strReportUrl = ex.ToString();
+                    Console.WriteLine("OUTER ERROR: " + ex.ToString());
+                    //ex.GetHashCode();
                 }
+            }
+
+            if(String.IsNullOrWhiteSpace(strReportUrl))
+            {
+                strReportUrl = "EMPTY";
             }
 
             return strReportUrl;
@@ -129,7 +154,7 @@ namespace Advance.Controllers
             model.reportName = "SchoolReportExecutiveSummary"; // Session["sReportName"].ToString().Trim();
 
             model.reportOutputFormat = strReportFormat;
-            model.reportParameters = "[{ LocationCode:M300 }]";
+            model.reportParameters = "[{'LocationCode': 'M300'}]"; // "[{ LocationCode:M300 }]";
             model.reportMode = "sync";
             model.reportType = "Cognos";
             model.reportViewerOn = true;

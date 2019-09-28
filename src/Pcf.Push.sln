@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pcf.Push.Dotnet.Core.Mvvm.D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pcf.Push.Dotnet.Framework.Mvc.Windows.Config", "Pcf.Push.Dotnet.Framework.Mvc.Windows.Config\Pcf.Push.Dotnet.Framework.Mvc.Windows.Config.csproj", "{6EBAA2E2-975A-413E-A8F9-BBB6DFC14886}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Advance", "Advance\Advance.csproj", "{8169E920-ECB4-48FC-AEF6-D923CA2E8674}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Advance", "Advance\Advance.csproj", "{8169E920-ECB4-48FC-AEF6-D923CA2E8674}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,8 +79,8 @@ Global
 		{6EBAA2E2-975A-413E-A8F9-BBB6DFC14886}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8169E920-ECB4-48FC-AEF6-D923CA2E8674}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8169E920-ECB4-48FC-AEF6-D923CA2E8674}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8169E920-ECB4-48FC-AEF6-D923CA2E8674}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8169E920-ECB4-48FC-AEF6-D923CA2E8674}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8169E920-ECB4-48FC-AEF6-D923CA2E8674}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{8169E920-ECB4-48FC-AEF6-D923CA2E8674}.Release|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
